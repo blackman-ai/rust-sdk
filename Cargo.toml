@@ -1,0 +1,21 @@
+[package]
+name = "blackman-client"
+version = "0.0.5"
+authors = ["Blackman AI <support@blackman.ai>"]
+edition = "2021"
+description = "Official Rust client for Blackman AI - The AI API proxy that optimizes token usage"
+homepage = "https://www.useblackman.ai"
+repository = "https://github.com/blackman-ai/rust-sdk"
+license = "MIT"
+keywords = ["blackman", "ai", "llm", "openai", "api"]
+categories = ["api-bindings", "web-programming::http-client"]
+
+[dependencies]
+serde = { version = "^1.0", features = ["derive"] }
+serde_json = "^1.0"
+url = "^2.2"
+reqwest = { version = "^0.11", features = ["json", "multipart"] }
+tokio = { version = "^1.0", features = ["full"] }
+
+[dev-dependencies]
+tokio-test = "^0.4"
