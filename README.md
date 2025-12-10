@@ -19,7 +19,7 @@ Add to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-blackman-client = "0.0.9"
+blackman-client = "0.0.10"
 tokio = { version = "1.0", features = ["full"] }
 ```
 

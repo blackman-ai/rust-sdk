@@ -11,21 +11,32 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct Message {
-    #[serde(rename = "content")]
-    pub content: Box<models::MessageContent>,
-    /// \"user\", \"assistant\", \"system\"
-    #[serde(rename = "role")]
-    pub role: String,
+/// ContentPart : Content part for multimodal messages (vision support)
+/// Content part for multimodal messages (vision support)
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ContentPart {
+    ContentPartOneOf(Box<models::ContentPartOneOf>),
+    ContentPartOneOf1(Box<models::ContentPartOneOf1>),
 }
 
-impl Message {
-    pub fn new(content: models::MessageContent, role: String) -> Message {
-        Message {
-            content: Box::new(content),
-            role,
-        }
+impl Default for ContentPart {
+    fn default() -> Self {
+        Self::ContentPartOneOf(Default::default())
+    }
+}
+/// 
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Type {
+    #[serde(rename = "text")]
+    Text,
+    #[serde(rename = "image_url")]
+    ImageUrl,
+}
+
+impl Default for Type {
+    fn default() -> Type {
+        Self::Text
     }
 }
 

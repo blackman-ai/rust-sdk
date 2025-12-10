@@ -12,20 +12,31 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct Message {
-    #[serde(rename = "content")]
-    pub content: Box<models::MessageContent>,
-    /// \"user\", \"assistant\", \"system\"
-    #[serde(rename = "role")]
-    pub role: String,
+pub struct ContentPartOneOf {
+    #[serde(rename = "text")]
+    pub text: String,
+    #[serde(rename = "type")]
+    pub r#type: Type,
 }
 
-impl Message {
-    pub fn new(content: models::MessageContent, role: String) -> Message {
-        Message {
-            content: Box::new(content),
-            role,
+impl ContentPartOneOf {
+    pub fn new(text: String, r#type: Type) -> ContentPartOneOf {
+        ContentPartOneOf {
+            text,
+            r#type,
         }
+    }
+}
+/// 
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Type {
+    #[serde(rename = "text")]
+    Text,
+}
+
+impl Default for Type {
+    fn default() -> Type {
+        Self::Text
     }
 }
 

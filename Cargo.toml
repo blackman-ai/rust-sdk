@@ -1,6 +1,6 @@
 [package]
 name = "blackman-client"
-version = "0.0.9"
+version = "0.0.10"
 authors = ["Blackman AI <support@blackman.ai>"]
 edition = "2021"
 description = "Official Rust client for Blackman AI - The AI API proxy that optimizes token usage"

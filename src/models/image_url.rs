@@ -12,19 +12,19 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct Message {
-    #[serde(rename = "content")]
-    pub content: Box<models::MessageContent>,
-    /// \"user\", \"assistant\", \"system\"
-    #[serde(rename = "role")]
-    pub role: String,
+pub struct ImageUrl {
+    /// Optional detail level: \"auto\", \"low\", or \"high\"
+    #[serde(rename = "detail", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub detail: Option<Option<String>>,
+    #[serde(rename = "url")]
+    pub url: String,
 }
 
-impl Message {
-    pub fn new(content: models::MessageContent, role: String) -> Message {
-        Message {
-            content: Box::new(content),
-            role,
+impl ImageUrl {
+    pub fn new(url: String) -> ImageUrl {
+        ImageUrl {
+            detail: None,
+            url,
         }
     }
 }

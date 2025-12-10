@@ -1,11 +1,11 @@
-# Message
+# ContentPartOneOf
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**content** | [**models::MessageContent**](MessageContent.md) |  | 
-**role** | **String** | \"user\", \"assistant\", \"system\" | 
+**text** | **String** |  | 
+**r#type** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
